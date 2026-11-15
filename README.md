@@ -1,6 +1,6 @@
 # Archive RAG Agent
 
-A local web app for asking questions about a text archive. It combines semantic and keyword search (RAG), citations to source documents, and an optional OpenAI-compatible language model. This repository includes the source archive and prebuilt ChromaDB and BM25 indexes, so it can be run without reindexing.
+A local web app for asking questions about a text archive. It combines semantic and keyword search (RAG), citations to source documents, and an optional OpenAI-compatible language model. The source archive and prebuilt ChromaDB/BM25 indexes are distributed separately as a GitHub release asset when available.
 
 ## Features
 
@@ -30,7 +30,7 @@ cd web && npm ci && cd ..
 
 ### Included archive and indexes
 
-The GitHub release includes `archive-data.zip` with the Telegram JSON exports, weblog PDF, corpus, ChromaDB vector store, and BM25 index. `scripts/dev.sh` downloads and extracts it automatically when the archive is not already present. For manual or single-process startup, run `python3 scripts/download_archive.py` first. No reindexing is needed. Source paths can be overridden with comma-separated `TELEGRAM_EXPORTS` and `PDF_SOURCES` entries in `.env`.
+When a release provides `archive-data.zip`, `scripts/dev.sh` downloads and extracts it automatically. For manual or single-process startup, run `python3 scripts/download_archive.py` first. If no archive asset is available, add source documents under `sources/` and build the local indexes with the ingestion command below. Source paths can be overridden with comma-separated `TELEGRAM_EXPORTS` and `PDF_SOURCES` entries in `.env`.
 
 ### Rebuild the indexes (optional)
 
@@ -109,7 +109,7 @@ cd ../web && npm run lint && npm run build
 
 ## Privacy and data
 
-The source archive and indexes are distributed as a GitHub release asset rather than Git objects. They may contain identifying details and copyrighted writing; review the applicable privacy, copyright, and platform terms before redistributing them. User uploads, model settings, and logs are local runtime data and are ignored by Git. Never commit API keys or a populated `.env` file.
+The source archive and indexes are intended to be distributed separately from Git objects. They may contain identifying details and copyrighted writing; review the applicable privacy, copyright, and platform terms before redistributing them. User uploads, model settings, and logs are local runtime data and are ignored by Git. Never commit API keys or a populated `.env` file.
 
 ## License
 

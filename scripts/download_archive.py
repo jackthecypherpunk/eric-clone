@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from urllib.error import HTTPError
 import urllib.request
 import zipfile
 from pathlib import Path
@@ -24,8 +25,13 @@ def main() -> None:
         print("Archive data already present; skipping download.")
         return
     request = urllib.request.Request(API, headers={"User-Agent": "archive-rag-agent"})
-    with urllib.request.urlopen(request, timeout=30) as response:
-        release = json.load(response)
+    try:
+        with urllib.request.urlopen(request, timeout=30) as response:
+            release = json.load(response)
+    except HTTPError as error:
+        if error.code == 404:
+            raise SystemExit("No published archive release was found; add sources and build the index locally.") from error
+        raise
     asset = next((item for item in release.get("assets", []) if item["name"] == ASSET), None)
     if asset is None:
         raise SystemExit(f"Release {release.get('tag_name')} does not contain {ASSET}")
