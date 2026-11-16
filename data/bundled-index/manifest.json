@@ -1,0 +1,97 @@
+{
+  "format": 1,
+  "description": "Prebuilt corpus, BM25 index, and Chroma vector database. Parts are concatenated in order.",
+  "files": [
+    {
+      "file": "payload/bm25/data.csc.index.npy",
+      "target": "data/bm25/data.csc.index.npy",
+      "sha256": "2e83dda4736785d586a6a2b6adca18462965c5d91735ae73e1c340dcd82bf215"
+    },
+    {
+      "file": "payload/bm25/doc_ids.json",
+      "target": "data/bm25/doc_ids.json",
+      "sha256": "4b6c66a20183ab643b6b3c1d45c74f82484e748c4da7a447489ee1d127c88a2f"
+    },
+    {
+      "file": "payload/bm25/indices.csc.index.npy",
+      "target": "data/bm25/indices.csc.index.npy",
+      "sha256": "93faa759c5f44b86b2e2265d34697a38d0eb28eb80d59101c53df41385af398a"
+    },
+    {
+      "file": "payload/bm25/indptr.csc.index.npy",
+      "target": "data/bm25/indptr.csc.index.npy",
+      "sha256": "0245f7b245743a9376c08ff582a2d6fd7498fd17e77d2e5ed73d0aa1b4411bcf"
+    },
+    {
+      "file": "payload/bm25/params.index.json",
+      "target": "data/bm25/params.index.json",
+      "sha256": "2aa3a9ffb9d1249ce47c2531fa8140f75efc9111e8eb86584919b805d8dfd273"
+    },
+    {
+      "file": "payload/bm25/vocab.index.json",
+      "target": "data/bm25/vocab.index.json",
+      "sha256": "3fc81902cefdadeddac753da4a1c70132e0cfedf713eed04c04046f95b7fdc8a"
+    },
+    {
+      "part": "payload/chroma/270e4819-9e74-4255-a1ca-2d8fa4f49662/data_level0.bin.part000",
+      "target": "data/chroma/270e4819-9e74-4255-a1ca-2d8fa4f49662/data_level0.bin",
+      "order": 0,
+      "sha256": "2f503a8cdd9eddc32740bfb245afb3e48cab6006f1c4cb129868d493b7b88dc8"
+    },
+    {
+      "part": "payload/chroma/270e4819-9e74-4255-a1ca-2d8fa4f49662/data_level0.bin.part001",
+      "target": "data/chroma/270e4819-9e74-4255-a1ca-2d8fa4f49662/data_level0.bin",
+      "order": 1,
+      "sha256": "ac4d5dcfb4b5ffb1ff4838797f94aa144afd1f70685a7c7d8d0c651dccfacbc0"
+    },
+    {
+      "part": "payload/chroma/270e4819-9e74-4255-a1ca-2d8fa4f49662/data_level0.bin.part002",
+      "target": "data/chroma/270e4819-9e74-4255-a1ca-2d8fa4f49662/data_level0.bin",
+      "order": 2,
+      "sha256": "8fa9f703f3759d35d24197a4e1dafe05f0ab5f2383bd27e3c41cb5c0bdea5158"
+    },
+    {
+      "file": "payload/chroma/270e4819-9e74-4255-a1ca-2d8fa4f49662/header.bin",
+      "target": "data/chroma/270e4819-9e74-4255-a1ca-2d8fa4f49662/header.bin",
+      "sha256": "c92687962432b88c751af8c9055b5506a99f81723d1085d40c80c932489c806d"
+    },
+    {
+      "file": "payload/chroma/270e4819-9e74-4255-a1ca-2d8fa4f49662/index_metadata.pickle",
+      "target": "data/chroma/270e4819-9e74-4255-a1ca-2d8fa4f49662/index_metadata.pickle",
+      "sha256": "ad81a99c4f69e55497dda526fcf665df6abea3cc1ed2eeca4b454e145636125b"
+    },
+    {
+      "file": "payload/chroma/270e4819-9e74-4255-a1ca-2d8fa4f49662/length.bin",
+      "target": "data/chroma/270e4819-9e74-4255-a1ca-2d8fa4f49662/length.bin",
+      "sha256": "fa7752d47404530634628835dd2ad1177b0d498b09b06a82bdae41b989ca2d85"
+    },
+    {
+      "file": "payload/chroma/270e4819-9e74-4255-a1ca-2d8fa4f49662/link_lists.bin",
+      "target": "data/chroma/270e4819-9e74-4255-a1ca-2d8fa4f49662/link_lists.bin",
+      "sha256": "8332bee7deaec318b3a831d441f80d6caafb3b2305bb95faaab9c3f5e52095f9"
+    },
+    {
+      "part": "payload/chroma/chroma.sqlite3.part000",
+      "target": "data/chroma/chroma.sqlite3",
+      "order": 0,
+      "sha256": "33ccf5a9e15b1b34290a695da20ed8a98a45c060b10872da7292d41a8d11deca"
+    },
+    {
+      "part": "payload/chroma/chroma.sqlite3.part001",
+      "target": "data/chroma/chroma.sqlite3",
+      "order": 1,
+      "sha256": "d3b30ffbd66ded938ab75fad7b5a63d0dde4302ccb2f49cf61ea5229631a27ec"
+    },
+    {
+      "part": "payload/chroma/chroma.sqlite3.part002",
+      "target": "data/chroma/chroma.sqlite3",
+      "order": 2,
+      "sha256": "79b64e16643a1021d1648e5fd51ed697d5d7bd98f0491b80583f1821379f605d"
+    },
+    {
+      "file": "payload/corpus.jsonl",
+      "target": "data/corpus.jsonl",
+      "sha256": "00f7466acdaa1b17c0eb85e4b51217ae80dfa69781d1f92143828dba07136c40"
+    }
+  ]
+}
