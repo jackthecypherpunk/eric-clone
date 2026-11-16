@@ -14,9 +14,16 @@ __pycache__/
 node_modules/
 web/dist/
 
-# Archive payload ships as a downloadable GitHub release asset
-data/
-sources/
+# Ship only the curated, prebuilt index bundle; ignore runtime settings/uploads.
+data/*
+!data/bundled-index/
+data/bundled-index/*
+!data/bundled-index/**/
+!data/bundled-index/**
+
+# Public source archive included with the repository
+!sources/
+!sources/**
 
 # Editor and operating system files
 .DS_Store

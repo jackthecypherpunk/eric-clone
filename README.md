@@ -1,6 +1,6 @@
 # Archive RAG Agent
 
-A local web app for asking questions about a text archive. It combines semantic and keyword search (RAG), citations to source documents, and an optional OpenAI-compatible language model. The source archive and prebuilt ChromaDB/BM25 indexes are distributed separately as a GitHub release asset when available.
+A local web app for asking questions about a text archive. It combines semantic and keyword search (RAG), citations to source documents, and an optional OpenAI-compatible language model. The source archive and prebuilt ChromaDB/BM25 indexes are included in this repository.
 
 ## Features
 
@@ -30,7 +30,13 @@ cd web && npm ci && cd ..
 
 ### Included archive and indexes
 
-When a release provides `archive-data.zip`, `scripts/dev.sh` downloads and extracts it automatically. For manual or single-process startup, run `python3 scripts/download_archive.py` first. If no archive asset is available, add source documents under `sources/` and build the local indexes with the ingestion command below. Source paths can be overridden with comma-separated `TELEGRAM_EXPORTS` and `PDF_SOURCES` entries in `.env`.
+The two Telegram JSON exports and weblog PDF are in `sources/`. A prebuilt corpus, BM25 index, and Chroma vector database are included as verified payload files under `data/bundled-index/`. Some large Chroma files are split into parts to fit GitHub's per-file limit. Restore them after cloning:
+
+```bash
+python3 scripts/restore_index.py
+```
+
+The restore step checks SHA-256 hashes and creates the runtime files in `data/`. `scripts/dev.sh` runs this step automatically. The bundled index uses `intfloat/multilingual-e5-large`; the first app launch may still download that embedding model. Source paths can be overridden with comma-separated `TELEGRAM_EXPORTS` and `PDF_SOURCES` entries in `.env`.
 
 ### Rebuild the indexes (optional)
 
@@ -39,7 +45,7 @@ cd backend
 uv run python -m app.ingest.run
 ```
 
-This creates the local corpus, ChromaDB vector index, and BM25 index in `data/`. The first run downloads the configured embedding model and may take a while; later runs add missing documents. Use `--rebuild` after changing the embedding model or to recreate the vector index, and `--limit 500` for a small trial run. Source files are restored from the release asset first.
+This creates the local corpus, ChromaDB vector index, and BM25 index in `data/`. The first run downloads the configured embedding model and may take a while; later runs add missing documents. Use `--rebuild` after changing the embedding model or to recreate the vector index, and `--limit 500` for a small trial run.
 
 ### Configure a language model
 
@@ -63,7 +69,7 @@ Open <http://localhost:5173>. To serve the built interface and API together:
 
 ```bash
 cd web && npm run build && cd ..
-python3 scripts/download_archive.py
+python3 scripts/restore_index.py
 cd backend && uv run uvicorn app.main:app --host 127.0.0.1 --port 8000
 ```
 
@@ -109,7 +115,7 @@ cd ../web && npm run lint && npm run build
 
 ## Privacy and data
 
-The source archive and indexes are intended to be distributed separately from Git objects. They may contain identifying details and copyrighted writing; review the applicable privacy, copyright, and platform terms before redistributing them. User uploads, model settings, and logs are local runtime data and are ignored by Git. Never commit API keys or a populated `.env` file.
+The source archive and prebuilt indexes are committed to this repository. They may contain identifying details and copyrighted writing; review applicable privacy, copyright, and platform terms before redistributing them. User uploads, model settings, and logs are local runtime data and are ignored by Git. Never commit API keys or a populated `.env` file.
 
 ## License
 
